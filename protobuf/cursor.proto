@@ -1,0 +1,78 @@
+syntax = "proto3";
+option java_package = "com.github.hsingpeng.extendbinder.proto";
+option java_outer_classname = "CursorMsg";
+
+message Request {
+    enum Method {
+        getCount = 0;
+        getPosition = 1;
+        move = 2;
+        moveToPosition = 3;
+        moveToFirst = 4;
+        moveToLast = 5;
+        moveToNext = 6;
+        moveToPrevious = 7;
+        isFirst = 8;
+        isLast = 9;
+        isBeforeFirst = 10;
+        isAfterLast = 15;
+        getColumnIndex = 16;
+        getColumnIndexOrThrow = 17;
+        getColumnName = 18;
+        getColumnNames = 19;
+        getColumnCount = 20;
+        getBlob = 21;
+        getString = 22;
+        copyStringToBuffer = 23;
+        getShort = 24;
+        getInt = 25;
+        getLong = 26;
+        getFloat = 27;
+        getDouble = 28;
+        getType = 29;
+        isNull = 30;
+        requery = 31;
+        close = 32;
+        isClosed = 33;
+        registerContentObserver = 34;
+        unregisterContentObserver = 35;
+        registerDataSetObserver = 36;
+        unregisterDataSetObserver = 37;
+        setNotificationUri = 38;
+        getNotificationUri = 39;
+        getWantsAllOnMoveCalls = 40;
+        setExtras = 41;
+        getExtras = 42;
+        respond = 43;
+        deactivate = 44;
+    }
+    string uuid = 1;
+    Method method = 2;
+    //method params
+    int32 offset = 3;
+    int32 position = 4;
+    string columnName = 5;
+    int32 columnIndex = 6;
+    string observer = 7;    //ContentObserver binds a uuid
+    string extras = 8;      //Bundle to String
+}
+
+message Response {
+    enum Status {
+        Ok = 0;
+        UriNotFound = 1;
+        MethodNotFound = 2;
+        MethodNotSupport = 3;
+    }
+    string uuid = 1;
+    Status status = 2;
+    //result
+    int32 intResult = 3;
+    bool boolResult = 4;
+    string stringResult = 5;    //Bundle to String
+    bytes bytesResult = 6;
+    repeated string stringArrayResult = 7;
+    float floatResult = 8;
+    double doubleResult = 9;
+    int64 longResult = 10;
+}

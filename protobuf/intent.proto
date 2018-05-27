@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_package = "com.github.hsingpeng.extendbinder.proto";
+option java_outer_classname = "IntentMsg";
+
+message Request {
+    enum Method {
+        startActivity = 0;
+        startService = 1;
+        sendBroadcast = 2;
+    }
+    Method method = 8;
+    string action = 1;
+    string className = 2;
+    string packageName = 3;
+    string type = 4;
+    repeated string categories = 5;
+    string uri = 6;
+    map<string, string> extras = 7;
+}

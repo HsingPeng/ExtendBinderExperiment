@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_package = "com.github.hsingpeng.extendbinder.proto";
+option java_outer_classname = "AppInfoMsg";
+
+message Info {
+    repeated string activityList = 1;
+    repeated string serviceList = 2;
+    repeated string broadcastList = 3;
+    repeated string contentProviderList = 4;
+}

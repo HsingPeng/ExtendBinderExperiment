@@ -1,0 +1,37 @@
+syntax = "proto3";
+option java_package = "com.github.hsingpeng.extendbinder.proto";
+option java_outer_classname = "ContentProviderMsg";
+
+message Request {
+    enum Method {
+        delete = 0;
+        getType = 1;
+        insert = 2;
+        query = 3;
+        update = 4;
+    }
+    string uuid = 1;
+    Method method = 2;
+    //method params
+    string uri = 3;
+    string selection = 4;
+    repeated string selectionArgs = 5;
+    map<string, string> values = 6;
+    repeated string projection = 7;
+    string sortOrder = 8;
+}
+
+message Response {
+    enum Status {
+        Ok = 0;
+        UriNotFound = 1;
+        MethodNotFound = 2;
+        PermissionNotAllowed = 3;
+        UnknownError = 4;
+    }
+    string uuid = 1;
+    Status status = 2;
+    //result
+    int32 intResult = 3;
+    string stringResult = 4; //Cursor resturns uuid
+}

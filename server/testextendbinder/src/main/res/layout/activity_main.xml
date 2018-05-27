@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.hsingpeng.testextendbinder.MainActivity">
+
+    <EditText
+        android:id="@+id/editTextMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonActivity"
+        android:layout_centerHorizontal="true"
+        android:ems="12"
+        android:hint="Intent:msg=?" />
+
+    <Button
+        android:id="@+id/buttonActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/buttonService"
+        android:layout_alignEnd="@+id/editTextMessage"
+        android:layout_alignStart="@+id/editTextMessage"
+        android:text="Send Activity" />
+
+    <Button
+        android:id="@+id/buttonService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonActivity"
+        android:layout_alignStart="@+id/buttonActivity"
+        android:layout_centerVertical="true"
+        android:text="Send Service" />
+
+    <Button
+        android:id="@+id/buttonBroadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonService"
+        android:layout_alignStart="@+id/buttonService"
+        android:layout_below="@+id/buttonService"
+        android:text="Send Broadcast" />
+
+    <Button
+        android:id="@+id/buttonContentProvider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonBroadcast"
+        android:layout_alignStart="@+id/buttonBroadcast"
+        android:layout_below="@+id/buttonBroadcast"
+        android:text="Query ContentProvider" />
+
+    <Button
+        android:id="@+id/button2Activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Second Activity" />
+
+    <Button
+        android:id="@+id/button3Activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2Activity"
+        android:layout_centerHorizontal="true"
+        android:text="Test Performance" />
+
+</RelativeLayout>
