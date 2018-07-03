@@ -11,8 +11,10 @@ Binder扩展机制：
 ## DIR STRUCTURE
 
 * linuxClient --> 扩展Binder机制的linux客户端，包含基于python的API SDK和一个demo
-    * demo1 --> linux客户端demo
+    * demo1 --> linux客户端demo1
         * extend --> 扩展Binder机制的API SDK
+        * launch.py --> demo1入口
+    * start.py --> Binder扩展程序启动器
 * protobuf --> protobuf通信格式约定
 * server --> 扩展Binder机制的服务端
     * app --> binder扩展机制的服务端
@@ -45,3 +47,19 @@ Binder扩展机制：
 2. 使用VNC Viewer连接上桌面Linux环境；
 3. 启动扩展Binder机制的服务端APP；
 4. 运行测试DEMO。
+
+# SCREENSHOT
+
+按照要求启动桌面Linux环境，以及Binder扩展服务。
+
+下图是Binder扩展机制的服务端APP：
+
+![Binder扩展机制的服务端APP](https://github.com/HsingPeng/ExtendBinderExperiment/raw/master/docu/extend_binder_server_app.png)
+
+下图是发送Intent给Android原生Activity的示意图，为了方便演示在Android虚拟机外又开了一个VNC窗口显示桌面Linux环境：
+
+![发送Intent给Android原生Activity](https://github.com/HsingPeng/ExtendBinderExperiment/raw/master/docu/send_intent_to_android_activity.gif)
+
+下图是发送Intent给桌面Linux环境中的demo1中的Activity的示意图，为了方便演示在Android虚拟机外又开了一个VNC窗口显示桌面Linux环境：
+
+![发送Intent给demo1的Activity](https://github.com/HsingPeng/ExtendBinderExperiment/raw/master/docu/send_intent_to_linux_activity.gif)
