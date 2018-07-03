@@ -8,6 +8,18 @@ Binder扩展机制：
 
 > 本项目是我论文的实验DEMO，论文提出机制如下：一种 Android 与桌面 Linux 应用程序协同运行的机制。此机制利用 Change Root 技术和 VNC 技术实现桌面 Linux 应用程序在 Android 系统上的运行，并且通过 Binder 扩展机制将 Android 四大组件扩展至桌面 Linux 应用程序，使得桌面 Linux 应用程序能够使用 Android 四大组件，从而实现与 Android 应用程序的交互。
 
+## HOW TO WORK
+
+Binder扩展机制在原本的Binder机制上修改添加了三个部分。
+
+1. 在原本的Android通信机制上修改了Android系统服务，在其中添加了Binder消息拦截处理模块。
+2. 在一个单独的进程中运行Binder扩展服务管理器。
+3. 在桌面Linux应用程序运行环境中的Binder扩展程序启动器。
+
+![Binder扩展机制的数据流示意图](https://github.com/HsingPeng/ExtendBinderExperiment/raw/master/docu/extend_binder_data_flow.png)
+
+上图的箭头表示进程通信的数据流。在Android系统服务进程中添加了Binder消息拦截处理模块，使得原本直接流向Android系统服务的通信请求得到了一次过滤。原生的Binder请求会释放仍然流向Android系统服务，Binder扩展机制的请求则会被拦截发往Binder扩展服务管理器。Binder扩展服务管理器同时接收来自桌面Linux应用程序的数据和Binder消息拦截处理模块的数据，并根据数据内容做出响应，发往目标程序。当请求的桌面Linux应用程序没有运行时，则会通知Binder扩展程序启动器启动目标程序。
+
 ## DIR STRUCTURE
 
 * linuxClient --> 扩展Binder机制的linux客户端，包含基于python的API SDK和一个demo
