@@ -20,6 +20,8 @@ Binder扩展机制在原本的Binder机制上修改添加了三个部分。
 
 上图的箭头表示进程通信的数据流。在Android系统服务进程中添加了Binder消息拦截处理模块，使得原本直接流向Android系统服务的通信请求得到了一次过滤。原生的Binder请求会释放仍然流向Android系统服务，Binder扩展机制的请求则会被拦截发往Binder扩展服务管理器。Binder扩展服务管理器同时接收来自桌面Linux应用程序的数据和Binder消息拦截处理模块的数据，并根据数据内容做出响应，发往目标程序。当请求的桌面Linux应用程序没有运行时，则会通知Binder扩展程序启动器启动目标程序。
 
+**注意：** Binder消息拦截模块目前借助Xposed框架实现，方便修改系统函数。从原理上来说，完全可以脱离Xposed框架，直接在Android系统源码中修改。
+
 ## DIR STRUCTURE
 
 * linuxClient --> 扩展Binder机制的linux客户端，包含基于python的API SDK和一个demo
@@ -59,6 +61,14 @@ Binder扩展机制在原本的Binder机制上修改添加了三个部分。
 2. 使用VNC Viewer连接上桌面Linux环境；
 3. 启动扩展Binder机制的服务端APP；
 4. 运行测试DEMO。
+
+# DEMO IMAGE
+
+为了方便需要的人验证本项目，特地上传了本人实验所用的Android虚拟机环境。
+虚拟机格式为ovf，可导入 VMware 或 Virtualbox 系列虚拟机软件。
+
+下载地址：
+链接:https://pan.baidu.com/s/1LQDsOI_0dnAOUbRkEgN6FA  密码:59eu
 
 # SCREENSHOT
 
